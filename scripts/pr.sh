@@ -77,6 +77,12 @@ else
 - "
 fi
 
+# ── 원격 브랜치 push ───────────────────────────────────────────
+if ! git ls-remote --exit-code origin "$CURRENT_BRANCH" &>/dev/null; then
+  echo "원격 브랜치 push 중..."
+  git push -u origin "$CURRENT_BRANCH"
+fi
+
 # ── PR 생성 ────────────────────────────────────────────────────
 echo "PR 생성 중... (${CURRENT_BRANCH} → ${BASE_BRANCH})"
 
